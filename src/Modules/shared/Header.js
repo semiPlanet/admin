@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class Header extends Component {
+
+    constructor() {
+        super();
+        this.logout = this.logout.bind(this)
+    }
+
+    logout(e){
+        e.preventDefault();
+        localStorage.removeItem('authorization');
+        localStorage.removeItem('user');
+        window.location.reload(true)
+    }
+    
     render(){
         return (
         <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -92,7 +105,7 @@ export default class Header extends Component {
                 </div>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i className="fas fa-th-large" /></a>
+                <a className="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button" title="Log Out" onClick={this.logout}><i className="fas fa-power-off" /></a>
                 </li>
             </ul>
             </nav>
