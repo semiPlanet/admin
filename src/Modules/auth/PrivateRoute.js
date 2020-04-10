@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth } from './auth';
 
 export default function PrivateRoute ({component: Component,...rest}) {
 
@@ -9,7 +8,7 @@ export default function PrivateRoute ({component: Component,...rest}) {
     return (
         <Route {...rest} render = {props =>
             
-            token ? (
+            token && token != null ? (
                 <Component {...props} />
             ):(
                 <Redirect to="/login"/>

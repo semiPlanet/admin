@@ -11,7 +11,7 @@ function App () {
 
 
     const setTokens = (result) => {
-      if(result!=null){
+      if(result !=null && result.headers.authorization != null && result.data.user != null){
         localStorage.setItem('authorization', result.headers.authorization);
         localStorage.setItem('user', JSON.stringify(result.data.user));
         setAuthTokens(result.headers.authorization);

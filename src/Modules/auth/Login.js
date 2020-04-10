@@ -13,8 +13,9 @@ export default function Login () {
 
     function postLogin(e) {
         e.preventDefault()
-        axios.post('http://localhost/backend/public/api/v1/admin/login',{email,password})
+        axios.post('http://localhost/backend/public/api/v1/login',{email,password})
             .then(result=>{
+                console.log(result)
                 if(result.status === 200) {
                     setAuthTokens(result);
                     setIsLoggedIn(true);
@@ -28,7 +29,7 @@ export default function Login () {
             })
     }
 
-    if(token) {
+    if(token && token != null) {
         return <Redirect to="/" />
     }
 
