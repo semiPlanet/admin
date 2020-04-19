@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { getProfessions, delProfession } from '../server/Server';
+import { getCategories, delCategory } from '../server/Server';
 import { Link } from 'react-router-dom';
 
-const Professions = () => {
-    
-    const [professions, setProfessions] = useState([]);
+const Categories = () => {
 
-    const allProfessions = () => {
-        getProfessions().then((data) => {
-            setProfessions(data.professions)
+    const [categories, setCategories] = useState([]);
+
+    const allCategories = () => {
+        getCategories().then( (data) => {
+            setCategories(data.categories)
         })
     }
 
-    const deleteProfession = (id) => {
-        delProfession(id).then(() => {
-            allProfessions();
+    const deleteCategory = (id) => {
+        if(!window.confirm('Are you sure?')) return;
+        delCategory(id).then((data) => {
+            allCategories();
         })
     }
 
-    useEffect(()=>{
-        allProfessions();
-    },[])
+    useEffect(() => {
+        allCategories();
+    }, [])
 
     return (
         <div className="content-wrapper">
@@ -28,12 +29,12 @@ const Professions = () => {
             <div className="container-fluid">
             <div className="row mb-2">
                 <div className="col-sm-6">
-                <h1>Profession Listing</h1>
+                <h1>Category Listing</h1>
                 </div>
                 <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item active">Professions</li>
+                    <li className="breadcrumb-item active">Categories</li>
                 </ol>
                 </div>
             </div>
@@ -54,24 +55,28 @@ const Professions = () => {
                             <tr>
                                 <th style={{width: 10}}>#</th>
                                 <th>Common Name</th>
-                                <th>Code</th>
                                 <th>In Languages</th>
                                 <th className="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                            professions.map((prof,i)=>{
-                                return <tr key={i}>
-                                        <td>{i+1}</td>
-                                        <td>{prof.profession.en}</td>
-                                        <td>{prof.code}</td>
-                                        <td>{JSON.stringify(prof.profession)}</td>
-                                        <td className="text-center">
-                                            <button className="btn btn-xs" title="Delete" onClick={deleteProfession.bind(this,prof.id)}><span className="fa fa-trash"></span></button>
-                                        </td>
-                                    </tr>
-                                })
+                                categories.length > 0 
+                                    ? 
+                                    categories.map((cat,i)=>{
+                                        return <tr key={i}>
+                                                <td>{i+1}</td>
+                                                <td>{cat.category.en}</td>
+                                                <td>{JSON.stringify(cat.category)}</td>
+                                                <td className="text-center">
+                                                    <button className="btn btn-xs" title="Delete" onClick={deleteCategory.bind(this, cat.id)}><span className="fa fa-trash"></span></button>
+                                                </td>
+                                            </tr>
+                                        })
+                                    :
+                                        <tr>
+                                            <td colspan="4" className="text-center">No data available</td>
+                                        </tr>
                             }
                         </tbody>
                         </table>
@@ -83,6 +88,7 @@ const Professions = () => {
         </section>
         </div>
     )
+    
 }
 
-export default Professions;
+export default Categories;

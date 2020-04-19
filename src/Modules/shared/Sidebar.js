@@ -83,30 +83,6 @@ const SideBar = () => {
 
               <li className="nav-item has-treeview">
                 <a href="#" className="nav-link">
-                  <i className="nav-icon fas fa-suitcase" />
-                  <p>
-                    Professions
-                    <i className="fas fa-angle-left right" />
-                  </p>
-                </a>
-                <ul className="nav nav-treeview">
-                  <li className="nav-item">
-                    <Link to="/professions" className="nav-link">
-                      <i className="far fa-eye nav-icon" />
-                      <p>View Professions</p>
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/profession/create" className="nav-link">
-                      <i className="far fa-edit nav-icon" />
-                      <p>Create Profession</p>
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-
-              <li className="nav-item has-treeview">
-                <a href="#" className="nav-link">
                   <i className="nav-icon fas fa-language" />
                   <p>
                     Languages
@@ -129,6 +105,56 @@ const SideBar = () => {
                 </ul>
               </li>
 
+              <li className="nav-item has-treeview">
+                <a href="#" className="nav-link">
+                  <i className="nav-icon fas fa-box" />
+                  <p>
+                    Categories
+                    <i className="fas fa-angle-left right" />
+                  </p>
+                </a>
+                <ul className="nav nav-treeview">
+                  <li className="nav-item">
+                    <Link to="/categories" className="nav-link">
+                      <i className="far fa-eye nav-icon" />
+                      <p>View Categories</p>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/category/create" className="nav-link">
+                      <i className="far fa-edit nav-icon" />
+                      <p>Create Categories</p>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+
+
+
+              <li className="nav-item has-treeview">
+                <a href="#" className="nav-link">
+                  <i className="nav-icon fas fa-suitcase" />
+                  <p>
+                    Professions
+                    <i className="fas fa-angle-left right" />
+                  </p>
+                </a>
+                <ul className="nav nav-treeview">
+                  <li className="nav-item">
+                    <Link to="/professions" className="nav-link">
+                      <i className="far fa-eye nav-icon" />
+                      <p>View Professions</p>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/profession/create" className="nav-link">
+                      <i className="far fa-edit nav-icon" />
+                      <p>Create Profession</p>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
 
               <li className="nav-item">
                 <a href="pages/widgets.html" className="nav-link">

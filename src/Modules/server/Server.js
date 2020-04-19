@@ -73,3 +73,48 @@ export const delProfession = (id) => {
         method:"GET",
     }, true)
 }
+
+export const getCategories = () => {
+    return request({
+        url: environment.category,
+        method: 'GET'
+    }, true)
+}
+
+export const createCategory = (data) => {
+    return request({
+        url:environment.category,
+        method:'POST',
+        data:data
+    }, true)
+}
+
+export const delCategory = (id) => {
+    return request({
+        url:environment.category + environment.delete + '/' +id,
+        method:'GET'
+    }, true)
+}
+
+export const getUsers = () => {
+    return request({
+        url: environment.api + environment.users,
+        method: 'GET'
+    }, true)
+}
+
+export const verifyUser = (slug) => {
+    return request({
+        url: environment.api + environment.users,
+        method: 'POST',
+        data: {slug:slug}
+    }, true)
+}
+
+export const suspendUser = (slug) => {
+    return request({
+        url: environment.api + environment.users + environment.suspend,
+        method: 'POST',
+        data: {slug:slug}
+    }, true)
+}

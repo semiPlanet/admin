@@ -5,3 +5,7 @@
     z-index: 999;
     bottom: -15px;
 }
+
+.verified {
+    color: #0800ff;
+}

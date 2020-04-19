@@ -11,6 +11,9 @@ import Language from '../admins/Language';
 import Languages from '../admins/Languages';
 import ProfessionCreate from '../profession/ProfessionCreate';
 import Professions from '../profession/Professions';
+import Categories from '../category/Categories';
+import CategoryCreate from '../category/CategoryCreate';
+import Users from '../users/Users';
 
 export default class Routing extends Component {
     render() {
@@ -28,6 +31,9 @@ export default class Routing extends Component {
              <PrivateRoute path="/languages" exact component={Languages} />
              <PrivateRoute path="/profession/create" exact component={ProfessionCreate} />
              <PrivateRoute path="/professions" exact component={Professions} />
+             <PrivateRoute path="/categories" exact component={Categories} />
+             <PrivateRoute path="/category/create" exact component={CategoryCreate} />
+             <PrivateRoute path="/users" exact component={Users} />
 
              <PrivateRoute component={NotFound404} />
            </Switch>

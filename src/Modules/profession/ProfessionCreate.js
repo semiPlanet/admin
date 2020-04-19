@@ -35,10 +35,8 @@ const ProfessionCreate = () => {
 
     const onSubmit = (data) =>{
         const formData =  {code:data.code, profession:names};
-        console.log(formData)
         createProfession(formData)
                 .then((data)=> {
-                    console.log(data)
                     setRedirect(true)
                 })
     }

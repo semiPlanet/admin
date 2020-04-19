@@ -27,7 +27,6 @@ const Admin = () => {
 
     const fetchData = () => {
         getAdmins().then( data => {
-            console.log('response',data);
             setAdmins(data.admins);
         });
     }
